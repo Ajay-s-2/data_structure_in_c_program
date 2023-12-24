@@ -1,0 +1,80 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define max 50
+int f = 0;
+int r = 0;
+void enqueue();
+void dequeue();
+void display();
+
+int queue[max];
+void main(){
+    while(1){
+    int c;
+    printf("\nEnter the choice:");
+    scanf("%d",&c);
+    switch(c)
+    
+    {
+        case 1:
+         enqueue();
+         break;
+         case 2:
+         dequeue();
+         break;
+         case 3:
+         display();
+         break;
+         case 4:
+         exit(0);
+         break;
+         default:
+         printf("\n invalid input");
+    }
+    }
+}
+void enqueue()
+{
+    if (max == r)
+    {
+        printf("full");
+    }
+    else
+    {
+        int element;
+        printf("\nEnter the element:");
+        scanf("%d",&element);
+        queue[r] = element;
+        r++;
+    }
+}
+void dequeue()
+{
+    if(f == r)
+    {
+        printf("empty");
+    }
+    else
+    {
+        for(int i=0;i<r-1;i++)
+        {
+        queue[f]=queue[i+1];
+        r--;
+        }
+    }
+}
+void display()
+{
+    if(f == r)
+    {
+        printf("empty");
+        
+    }
+    else
+    {
+        for (int i=f;i<r;i++)
+        {
+            printf("%d \t",queue[i]);
+        }
+    }
+}
